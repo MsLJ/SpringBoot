@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+	1)파일이 업로드 될 폴더 확보(서버)
+	
+		->프로젝트에 폴더 만들어놓고 war로 배포하면
+		->압축이 풀리면서 서버쪽에도 만들어질테니
+		=>war수정->압축이 풀리면서 기존에 업로드된 파일이 다 지워짐
+ 		=>보안?
+ 		->그냥 서버에 폴더를 만들어라
+ 	application properties에
+ 	file.dir=C:/project_L/fileupload 이런식으로 등록해놓으면
+ 	그리고 파일 크기도 
+ 	
+ 	
+ 	다 사용이 가능 우리는 리눅스 서버에 쓸꺼니까 리눅스 서버에 폴더를 만들어놓고 그 경로를 써놓으면
+ 	됄거같다.
+ 	사용할꺼면 DAO/Controller쪽에서 이렇게 쓰면 경로 부르기 가능
+ 	@Value("${file.dir}")
+	private String fileDir;
+	
+	
+	
+	2)글자/숫자는 인코딩 가능,파일은 인코딩 불가
+		->cos.jar Spring Legacy는 전통기술 이기에 이거 사용
+		=>cos.jar역활 하는 클래스가 있음(Spring Legacy때부터도 있었는데)
+		
+	
+ 	
+ 
+ 
+ -->
+
+<form action="file.upload" method="post" enctype="multipart/form-data">
+제목:<input name="title"><p>
+사진:<input name="photoo" type="file"><p>
+<!-- multiple사용하면 파일 여러개 선택이 가능 -->
+파일:<input name="etccc" type="file" multiple="multiple">
+<button>업로드</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <style>
+        .news-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #pagination-controls {
+            margin-top: 20px;
+        }
+
+        .pagination-button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="news-container"></div>
+    <div id="pagination-controls"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const itemsPerPage = 10; // Specify the number of items per page
+        let currentPage = 1; // Initialize the current page
+
+        function fetchNews(page) {
+            $.ajax({
+                url: `http://localhost:3000/news.get?page=${page}`,
+                method: "GET",
+                success: function(data) {
+                    displayNews(data);
+                },
+                error: function(err) {
+                    console.error("Error fetching data:", err);
+                }
+            });
+        }
+
+        function displayNews(newsData) {
+            const newsContainer = document.getElementById("news-container");
+            newsContainer.innerHTML = ""; // Clear existing content
+            
+            for (const newsItem of newsData) {
+                const newsItemDiv = document.createElement("div");
+                newsItemDiv.className = "news-item";
+                
+                const titleElement = document.createElement("h2");
+                titleElement.textContent = newsItem.title;
+                
+                const descriptionElement = document.createElement("p");
+                descriptionElement.textContent = newsItem.description;
+                
+                const pubdateElement = document.createElement("p");
+                pubdateElement.textContent = newsItem.pubdate;
+                
+                newsItemDiv.appendChild(titleElement);
+                newsItemDiv.appendChild(descriptionElement);
+                newsItemDiv.appendChild(pubdateElement);
+                
+                newsContainer.appendChild(newsItemDiv);
+            }
+
+            // Update pagination controls
+            const paginationControls = document.getElementById("pagination-controls");
+            paginationControls.innerHTML = "";
+
+            const prevButton = document.createElement("span");
+            prevButton.className = "pagination-button";
+            prevButton.textContent = "Previous";
+            prevButton.addEventListener("click", () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    fetchNews(currentPage);
+                }
+            });
+
+            const nextButton = document.createElement("span");
+            nextButton.className = "pagination-button";
+            nextButton.textContent = "Next";
+            nextButton.addEventListener("click", () => {
+                currentPage++;
+                fetchNews(currentPage);
+            });
+
+            paginationControls.appendChild(prevButton);
+            paginationControls.appendChild(nextButton);
+        }
+
+        // Initial fetch
+        fetchNews(currentPage);
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function updateCoffee(n){
+	location.href="coffee.update?name="+n;
+	
+}
+function deleteCoffee(n){
+	location.href="coffee.delete?name="+n;
+	
+}
+
+</script>
+</head>
+<body>
+
+<form action="coffee.reg">
+name:<input name="name"><p>
+price:<input name="price"><p>
+<button>reg</button>
+</form>
+[[${result}]]
+<table border="1">
+<tr th:each="c:${coffees}"><td th:onclick="deleteCoffee([[${c.name}]]);" th:text="${c.name}"></td><td th:onclick="updateCoffee([[${c.name}]]);" th:text="${c.price}"></td></tr>
+</table>
+</body>
+</html>

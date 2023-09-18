@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	[[${result}]]
+	<form action="snack.reg">
+		이름:<input name="name">
+		<p>
+			가격:<input name="price">
+		<p>
+			제조사: <input name="company">
+		<p>
+			<button>등록</button>
+	</form>
+	<table border="1">
+		<tr th:each="s : ${snacks}">
+			<td th:text="${s.name}"></td>
+			<td th:text="${s.price}"></td>
+			<td th:text="${s.company.name}"></td>
+			<td th:text="${s.company.addr}"></td>
+		</tr>
+	</table>
+
+
+
+	<table border="1">
+		<tr th:each="c : ${companys}">
+			<td th:text="${c.name}"></td>
+			<td th:text="${c.addr}"></td>
+			<td>
+				<table border="1">
+					<tr th:each="s:${c.snacks}">
+						<td th:text=${s.name}></td>
+						<td th:text=${s.price}></td>
+					</tr>
+
+
+				</table>
+			</td>
+		</tr>
+	</table>
+
+
+
+
+
+
+
+</body>
+</html>

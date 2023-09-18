@@ -1,0 +1,58 @@
+{
+	"folders": {},
+	"connections": {
+		"oracle_thin-189cd74cc7c-514378f9c0519ee2": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "195.168.9.65",
+			"save-password": true,
+			"configuration": {
+				"host": "195.168.9.65",
+				"port": "1521",
+				"database": "xe",
+				"url": "jdbc:oracle:thin:@195.168.9.65:1521:xe",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SID"
+				},
+				"auth-model": "oracle_native"
+			}
+		},
+		"oracle_thin-189deb2400f-60543fbf28fc2900": {
+			"provider": "oracle",
+			"driver": "oracle_thin",
+			"name": "195.168.9.42",
+			"save-password": true,
+			"configuration": {
+				"host": "195.168.9.42",
+				"port": "1521",
+				"database": "xe",
+				"url": "jdbc:oracle:thin:@195.168.9.42:1521:xe",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-connection-type@": "BASIC",
+					"@dbeaver-sid-service@": "SID"
+				},
+				"auth-model": "oracle_native"
+			}
+		}
+	},
+	"virtual-models": {"oracle_thin-189deb2400f-60543fbf28fc2900":{"TRACE":{":CODE_BOARD_REPLY":{"properties":{"erd.diagram.state":{"serialized":"\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202309041819\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"oracle_thin-189deb2400f-60543fbf28fc2900\"\u003e\u003centity id\u003d\"1\" name\u003d\"CODE_BOARD_REPLY\" fq-name\u003d\"TRACE.CODE_BOARD_REPLY\" order\u003d\"0\" color-bg\u003d\"255,128,64\" font\u003d\"Segoe UI:9:0\" x\u003d\"13\" y\u003d\"142\"\u003e\u003cpath name\u003d\"TRACE\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"2\" name\u003d\"CODE_BOARD\" fq-name\u003d\"TRACE.CODE_BOARD\" order\u003d\"1\" font\u003d\"Segoe UI:9:0\" x\u003d\"201\" y\u003d\"20\"\u003e\u003cpath name\u003d\"TRACE\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"3\" name\u003d\"MEMBER_WRITER\" fq-name\u003d\"TRACE.MEMBER_WRITER\" order\u003d\"2\" font\u003d\"Segoe UI:9:0\" x\u003d\"345\" y\u003d\"125\"\u003e\u003cpath name\u003d\"TRACE\"/\u003e\u003c/entity\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"CODE_BOARD_FK\" fq-name\u003d\"TRACE.CODE_BOARD_REPLY.CODE_BOARD_FK\" type\u003d\"fk\" pk-ref\u003d\"2\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"CODE_WRITER_FK\" fq-name\u003d\"TRACE.CODE_BOARD_REPLY.CODE_WRITER_FK\" type\u003d\"fk\" pk-ref\u003d\"3\" fk-ref\u003d\"1\"/\u003e\u003crelation name\u003d\"CODE_WRITER\" fq-name\u003d\"TRACE.CODE_BOARD.CODE_WRITER\" type\u003d\"fk\" pk-ref\u003d\"3\" fk-ref\u003d\"2\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"}}}}}},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": true,
+			"close-transactions-period": 1800
+		}
+	}
+}

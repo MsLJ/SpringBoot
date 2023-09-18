@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 th:text="${mf.title}"></h1>
+<h1 th:text="${mf.photo}"></h1>
+<img th:src="${'/photo/' + mf.photo}">
+<div th:each="f:${mf.etc}">
+<div th:text="${f}"></div>
+<hr>
+
+</div>
+<div th:each="f:${mf.etc}">
+<!-- a태그를 하고 당연히 text를  채워줘야 그 다운로드가 뜰것-->
+<a th:href="${'/download/'+f}"th:text="${f}"></a> 
+</div>
+</body>
+</html>

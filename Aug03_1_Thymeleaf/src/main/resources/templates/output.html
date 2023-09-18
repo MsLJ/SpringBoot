@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript">
+function test(v,v2){
+	alert(v);
+	alert(v2);
+}
+	
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+	MVC패턴 ->.jsp에 자바소스x
+	EL
+	JSTL
+	${param.파라메터명}
+ -->
+	<h2>계산결과</h2>
+	<!-- EL---------------------------- -->
+	<h3 th:text="${param.x}"></h3>
+	<h3>[[${param.y}]]</h3>
+	<hr>
+	<!-- 기본형급:${어트리뷰트명} -->
+	<h1 th:text="${a}"></h1>
+	<hr>
+	<!-- 객체급:${어트리뷰트명.멤버변수명} -->
+	<h1 th:text="${crr.hab}"></h1>
+	<h1 th:text="${crr.cha}"></h1>
+	<h1 th:text="${crr.gob}"></h1>
+	<h1 th:text="${crr.moks}"></h1>
+	<hr>
+	<!-- 컬렉션급: ${어트리뷰트명[인덱스/키].멤버 변수명} -->
+	<h1 th:text="${s[0].name}"></h1>
+	<h1 th:text="${ss['ㄱ'].name}"></h1>
+
+	<hr>
+	<!-- 세션 어트리뷰트: ${session.어트리뷰트명....} -->
+	<h3 th:text="${session.d}"></h3>
+	<hr>
+	<!-- JSTL---------------------------- -->
+	<!-- JSTL-core ---------------------------- -->
+	<!-- 기존 JSRL:DOM객체형태
+		Thymeleaf는 DOM객체의 속성형태
+ -->
+	<!-- else if는 없음 -->
+	[[${e}]]
+	<br>
+	<h1 th:if="${e%2==1}">홀수</h1>
+	<h1 th:unless="${e%2==1}">짝수</h1>
+	<!-- 이 조건문이 아니면 나오는 -->
+	<hr>
+	<!-- 클래식 for는 없고  -->
+	<table border="1">
+		<!-- 변수명:${그거} -->
+		<tr th:each="snack : ${s}">
+			<td>[[${snack.name}]],[[${snack.price}]]</td>
+		</tr>
+	</table>
+	<h1 th:each="snack : ${s}">[[${snack.name}]],[[${snack.price}]]</h1>
+	<hr>
+	<table border="1">
+		<!-- 변수명,인덱스정보:${그거} -->
+		<tr th:each="snack,iInfo : ${s}">
+			<td th:text="${iInfo}"></td>
+			<td th:text="${iInfo.index}"></td>
+			<td th:text="${iInfo.count}"></td>
+			<td th:text="${iInfo.size}"></td>
+			<td th:text="${iInfo.current}"></td>
+			<td>[[${snack.name}]],[[${snack.price}]]</td>
+		</tr>
+	</table>
+	<hr>
+	<table border="1">
+		<!-- 변수명:${그거} HashMap-->
+		<tr th:each="ss : ${ss}">
+			<td th:text="${ss.key}"></td>
+			<td th:text="${ss.value.name}"></td>
+			<td th:text="${ss.value.price}"></td>
+		</tr>
+	</table>
+	<hr>
+	<!-- JSTL -formatiing------------------------------------- -->
+	<!-- 								그거,자리수,'COMMA' -->
+
+	<h3 th:text="${#numbers.formatInteger(f,1,'COMMA')}"></h3>
+	<hr>
+	<!-- 			그거, 정수자리수, 소수점자리수 -->
+	<h3 th:text="${#numbers.formatDecimal(g,1,3)}"></h3>
+	<hr>
+	
+	<!-- 그거,'형식' -->
+	<h3 th:text="${#dates.format(h,'yyyy/MM/dd')}"></h3>
+	<!-- jsp:include--------------------------------->
+	<!-- 기존 include형식은 소스코드를 가져와서 그걸 넣는거.. -->
+	<table border="1">
+		<tr>
+		<!-- 근데 fragment를 쓰면 abc에 있는 html내에 그 fragment로 지정한 애만 가져오는게 가능 예를들어
+		h1으로만 갖고오는게 가능 html부터 다 끌어오는게 아닌 -->
+			<td th:insert="~{${cp}::${cpSub}}"></td>
+		</tr>
+	</table>
+	
+	<!-- 기타-------------- -->
+	<!-- 속성이면 th시리즈 th:속성명 -->
+	<hr>
+	<button th:onclick="return test([[${a}]],[[${f}]]);">q</button>
+	<hr>
+	<!-- 인터넷 주소 @{}로 감싸기 -->
+	<a th:href="@{${i}}">네이버로</a>
+	
+	
+	
+</body>
+</html>

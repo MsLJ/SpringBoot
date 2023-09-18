@@ -1,0 +1,31 @@
+@charset "UTF-8";
+#table1{
+	width: 1200px;
+	background-color:#bfe3f2; 
+}
+#table2{
+	width: 1200px;
+	background-color:#fff; 
+	color: #333;
+	font-family: "배달의민족 주아";
+}
+#table3{
+	width: 1200px;
+	background-color:#1C3359; 
+	color: #fff;
+}
+#table4{
+	width: 1200px;
+	background-color:#3A5F96; 
+	color: #fff;
+}
+#table5{
+	width: 1200px;
+	background-color:#4874B1; 
+	color: #fff;
+}
+#table6{
+	width: 1200px;
+	background-color:#5C8CD0; 
+	color: #fff;
+}
